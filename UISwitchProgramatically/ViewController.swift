@@ -7,12 +7,50 @@
 //
 
 import UIKit
+import TinyConstraints
 
 class ViewController: UIViewController {
 
+    lazy var CustomSwitch: UISwitch = {
+       
+        let CustomSwitch = UISwitch()
+        
+        CustomSwitch.tintColor = .red
+        CustomSwitch.onTintColor = .black
+        CustomSwitch.thumbTintColor = .blue
+        CustomSwitch.addTarget(self, action: #selector(handleSwitch(sender:)), for: .valueChanged)
+        
+        return CustomSwitch
+        
+    }()
+    
+    
+    @objc func handleSwitch(sender : UISwitch){
+        
+        if sender.isOn == true {
+            
+            print("on")
+            
+        }else{
+            
+            
+            print("off")
+        }
+        
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        view.backgroundColor = .orange
+        
+        view.addSubview(CustomSwitch)
+        
+        CustomSwitch.centerInSuperview()
+
+
     }
 
 
